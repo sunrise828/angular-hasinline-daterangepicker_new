@@ -1,0 +1,15 @@
+{
+  "name": "angular-hasinline-daterangepicker",
+  "version": "0.0.0",
+  "authors": [
+    "sunrise1986"
+  ],
+  "description": "Angular daterangepicker with inline function",
+  "private": false,
+  "dependencies": {
+    "angular": "^1.2.17",
+    "bootstrap": "^3.0.0",
+    "bootstrap-daterangepicker": "^2.0.0"
+  },
+  "demo": "example.html"
+}

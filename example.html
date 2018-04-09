@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Daterange picker example</title>
+
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_install/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="bower_install/bootstrap-daterangepicker/daterangepicker.css" />
+    <!-- endbower -->
+
+</head>
+
+<body>
+    <!-- bower:js -->
+    <script src="bower_install/jquery/dist/jquery.js"></script>
+    <script src="bower_install/angular/angular.js"></script>
+    <script src="bower_install/angular-messages/angular-messages.js"></script>
+    <script src="bower_install/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_install/moment/moment.js"></script>
+    <script src="./daterangepicker++.js"></script>
+    <!-- endbower -->
+
+    <script src="./angular-daterangepicker++.js"></script>
+
+<div class="container">
+    <h1>Daterange picker example</h1>
+
+    <div class="row">
+        <div class="col-md-6" ng-controller="TestCtrl">
+            <form name="dateForm" class="form-horizontal">
+                <div class="form-group">
+                    <label for="daterange1" class="control-label">Simple picker</label>
+                    <div type="text" date-range-picker inline="true" id="daterange1" name="daterange1" class="date-picker always-open"
+                      ng-model="date">
+                    </div>
+                </div>
+                <div class="form-group">
+                    start-date: {{date.startDate}}   ---------- end-date: {{date.endDate}}
+                </div>
+                <div class="form-group">
+                    <label for="daterange5" class="control-label">Picker with custom format</label>
+                    <div class="input-group col-md-6" id="daterange5">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                        <input date-range-picker name="daterange5" class="form-control date-picker" type="text" options="opts"
+                           ng-model="date2" required/>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-chevron-down"></span></span>
+                    </div>
+                </div>                
+            </form>            
+        </div>
+    </div>
+</div>
+</body>
+
+
+<script>
+exampleApp = angular.module('example', ['ngMessages', 'daterangepicker']);
+exampleApp.controller('TestCtrl', function($scope) {
+    $scope.date = {
+        startDate: moment().subtract(3, "days"),
+        endDate: moment()
+    };
+    $scope.date2 = {
+        startDate: moment().subtract(5, "days"),
+        endDate: moment()
+    };
+
+    $scope.opts = {
+        locale: {
+            applyClass: 'btn-green',
+            applyLabel: "Použít",
+            fromLabel: "Od",
+            toLabel: "Do",
+            cancelLabel: 'Zrušit',
+            customRangeLabel: 'Vlastní rozsah',
+            daysOfWeek: ['Ne', 'Po', 'Út', 'St', 'Čt', 'Pá', 'So'],
+            firstDay: 1,
+            monthNames: ['Leden', 'Únor', 'Březen', 'Duben', 'Květen', 'Červen', 'Červenec', 'Srpen', 'Září',
+                'Říjen', 'Listopad', 'Prosinec'
+            ]
+        },
+        //autoApply: true,
+        ranges: {
+            'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+            'Last 30 Days': [moment().subtract(29, 'days'), moment()]
+        }
+    };   
+
+});
+
+angular.bootstrap(document, ['example']);</script>
+
+</html>

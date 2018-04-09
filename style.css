@@ -1,0 +1,37 @@
+.always-open :first-child {
+    position: relative !important;    
+}
+
+.always-open :not(.fa):first-child::before {
+    position: relative !important;
+    display: none !important;
+    content: none;
+}
+
+td.start-date {    
+    background: linear-gradient(-45deg,#fa6d64 50%, transparent 50%) !important;        
+    color: #333 !important;
+    border-color: white !important;
+}
+
+td.end-date {
+    background: linear-gradient(135deg, #fa6d64 50%, transparent 50%);        
+    color: #333 !important;
+    border-bottom-color: white !important;
+    border-right-color: white !important;   
+}
+
+td.in-range {
+    background-color: #fa6d64 !important;
+    border: 1px solid white !important;
+}
+
+td.in-range.end-date {
+    background-color: transparent !important;
+    border-left-color: transparent !important;
+    border-top-color: #fa6d64 !important;
+}
+
+.next, .prev {
+    color: black;
+}
